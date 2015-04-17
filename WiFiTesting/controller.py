@@ -130,8 +130,15 @@ if __name__ == "__main__":
     
     print('Hit any key, or ESC to exit')
     
+    #make a timer that pings every few seconds with a ~
+    i = 0
+
     while True:
-        
+        i = i + 1
+        if i > 2000000:
+            sock.sendto(bytes("~\n", "utf-8"), (HOST, PORT))
+            i = 0
+
         if kb.kbhit():
             c = kb.getch()
             if ord(c) == 27: # ESC
